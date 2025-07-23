@@ -16,7 +16,6 @@ const SignInPage: React.FC = () => {
   
   // Get the base URL from environment variable or fallback to window.location.origin
   const baseUrl = import.meta.env.VITE_BASE_URL;
-  console.log('baseUrl', baseUrl);
   
   const stytchLoginConfig: StytchLoginConfig = {
     products: [Products.emailMagicLinks, Products.oauth],
