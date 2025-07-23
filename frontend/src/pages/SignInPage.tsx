@@ -17,13 +17,13 @@ const SignInPage: React.FC = () => {
   const stytchLoginConfig: StytchLoginConfig = {
     products: [Products.emailMagicLinks, Products.oauth],
     emailMagicLinksOptions: {
-      loginRedirectURL: 'http://localhost:3000/authenticate',
-      signupRedirectURL: 'http://localhost:3000/authenticate',
+      loginRedirectURL: window.location.origin + '/authenticate',
+      signupRedirectURL: window.location.origin + '/authenticate',
     },
     oauthOptions: {
       providers: [{ type: 'google' }],
-      loginRedirectURL: 'http://localhost:3000/authenticate',
-      signupRedirectURL: 'http://localhost:3000/authenticate',
+      loginRedirectURL: window.location.origin + '/authenticate',
+      signupRedirectURL: window.location.origin + '/authenticate',
     }
   };
 
