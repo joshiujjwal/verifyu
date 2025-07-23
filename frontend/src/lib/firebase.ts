@@ -19,11 +19,11 @@ export const auth = getAuth(app);
 export const db = getFirestore(app);
 export const functions = getFunctions(app);
 
-// Connect to local emulator in development
-if (import.meta.env.DEV) {
-  import('firebase/functions').then(({ connectFunctionsEmulator }) => {
-    connectFunctionsEmulator(functions, '127.0.0.1', 5002);
-  });
-}
+// // Connect to local emulator in development
+// if (import.meta.env.DEV) {
+//   import('firebase/functions').then(({ connectFunctionsEmulator }) => {
+//     connectFunctionsEmulator(functions, '127.0.0.1', 5002);
+//   });
+// }
 
 export default app;

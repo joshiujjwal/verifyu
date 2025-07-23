@@ -33,59 +33,54 @@ const admin = require("firebase-admin");
 const {FieldValue} = require("firebase-admin/firestore");
 const functions = require("firebase-functions");
 const stytch = require("stytch");
-const path = require("path");
 
-// Initialize Firebase Admin with proper credentials for both local and production
-const adminConfig = {
-  projectId: "verifyu-5ffa5",
-};
 
-// For local development, use service account key if available
-let serviceAccountKey = null;
-const isDevelopment = process.env.NODE_ENV === "development" || process.env.FUNCTIONS_EMULATOR;
+// let serviceAccountKey = null;
+// const isDevelopment = process.env.NODE_ENV === "development" || process.env.FUNCTIONS_EMULATOR;
 
-if (isDevelopment) {
-  try {
-    const serviceAccountPath = path.join(__dirname, "serviceAccountKey.json");
-    serviceAccountKey = require(serviceAccountPath);
-    adminConfig.credential = admin.credential.cert(serviceAccountKey);
-    console.log("Using service account key for local development");
-  } catch (error) {
-    console.warn("Service account key not found for local development:", error.message);
-    console.warn("Using default credentials - some features may not work in emulator");
-  }
-} else {
-  // In production, explicitly use application default credentials
-  adminConfig.credential = admin.credential.applicationDefault();
-  console.log("Using application default credentials for production");
-}
+// if (isDevelopment) {
+//   try {
+//     const serviceAccountPath = path.join(__dirname, "serviceAccountKey.json");
+//     serviceAccountKey = require(serviceAccountPath);
+//     adminConfig.credential = admin.credential.cert(serviceAccountKey);
+//     console.log("Using service account key for local development");
+//   } catch (error) {
+//     console.warn("Service account key not found for local development:", error.message);
+//     console.warn("Using default credentials - some features may not work in emulator");
+//   }
+// } else {
+//   // In production, explicitly use application default credentials
+//   console.log("Using application default credentials for production");
+// }
 
-// Initialize Firebase Admin - this should work in both dev and production
-try {
-  // Check if app is already initialized to avoid duplicate initialization
-  if (admin.apps.length === 0) {
-    admin.initializeApp(adminConfig);
-  }
-  
-  // Only log service account details in development
-  if (isDevelopment) {
-    const adminCredential = admin.app().options.credential;
-    console.log("Service account details:", {
-      projectId: admin.app().options.projectId,
-      hasCredential: !!adminCredential,
-      clientEmail: serviceAccountKey?.client_email || "No client email",
-      privateKey: serviceAccountKey?.private_key ? "Present" : "Missing",
-    });
-    console.log("Firebase Admin initialized with project:", admin.app().options.projectId);
-    console.log("Service account email:", serviceAccountKey?.client_email || "Using default credentials");
-  } else {
-    // Production logging - minimal and clean
-    console.log("Firebase Admin initialized for production with project:", admin.app().options.projectId);
-  }
-} catch (error) {
-  console.error("Failed to initialize Firebase Admin:", error);
-  throw error;
-}
+// // Initialize Firebase Admin - this should work in both dev and production
+// try {
+//   // Check if app is already initialized to avoid duplicate initialization
+//   if (admin.apps.length === 0) {
+//     admin.initializeApp(adminConfig);
+//   }
+//   // Only log service account details in development
+//   if (isDevelopment) {
+//     const adminCredential = admin.app().options.credential;
+//     console.log("Service account details:", {
+//       projectId: admin.app().options.projectId,
+//       hasCredential: !!adminCredential,
+//       clientEmail: serviceAccountKey?.client_email || "No client email",
+//       privateKey: serviceAccountKey?.private_key ? "Present" : "Missing",
+//     });
+//     console.log("Firebase Admin initialized with project:", admin.app().options.projectId);
+//     console.log("Service account email:", serviceAccountKey?.client_email || "Using default credentials");
+//   } else {
+//     // Production logging - minimal and clean
+//     console.log("Firebase Admin initialized with service account:", admin.app().options.serviceAccountId);
+//     console.log("Firebase Admin initialized for production with project:", admin.app().options.projectId);
+//   }
+// } catch (error) {
+//   console.error("Failed to initialize Firebase Admin:", error);
+//   throw error;
+// }
+
+admin.initializeApp();
 
 // --- CLIENT INITIALIZATION ---
 // Use environment variables for local development, Firebase config for production
