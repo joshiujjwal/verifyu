@@ -37,8 +37,6 @@ const AuthenticatePage: React.FC = () => {
           setLoading(false);
           return;
         }
-
-        console.log('Processing Stytch token:', token);
         
         // Call Firebase function to create custom token
         const createFirebaseToken = httpsCallable<{ stytchToken: string }, { firebase_token: string }>(

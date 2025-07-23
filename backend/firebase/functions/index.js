@@ -54,11 +54,19 @@ if (isDevelopment) {
     console.warn("Service account key not found for local development:", error.message);
     console.warn("Using default credentials - some features may not work in emulator");
   }
+} else {
+  // In production, explicitly use application default credentials
+  adminConfig.credential = admin.credential.applicationDefault();
+  console.log("Using application default credentials for production");
 }
 
 // Initialize Firebase Admin - this should work in both dev and production
 try {
-  admin.initializeApp(adminConfig);
+  // Check if app is already initialized to avoid duplicate initialization
+  if (admin.apps.length === 0) {
+    admin.initializeApp(adminConfig);
+  }
+  
   // Only log service account details in development
   if (isDevelopment) {
     const adminCredential = admin.app().options.credential;

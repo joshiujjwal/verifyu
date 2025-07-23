@@ -13,17 +13,21 @@ import { Products } from '@stytch/vanilla-js';
 
 const SignInPage: React.FC = () => {
   const navigate = useNavigate();
-
+  
+  // Get the base URL from environment variable or fallback to window.location.origin
+  const baseUrl = import.meta.env.VITE_BASE_URL;
+  console.log('baseUrl', baseUrl);
+  
   const stytchLoginConfig: StytchLoginConfig = {
     products: [Products.emailMagicLinks, Products.oauth],
     emailMagicLinksOptions: {
-      loginRedirectURL: window.location.origin + '/authenticate',
-      signupRedirectURL: window.location.origin + '/authenticate',
+      loginRedirectURL: baseUrl + '/authenticate',
+      signupRedirectURL: baseUrl + '/authenticate',
     },
     oauthOptions: {
       providers: [{ type: 'google' }],
-      loginRedirectURL: window.location.origin + '/authenticate',
-      signupRedirectURL: window.location.origin + '/authenticate',
+      loginRedirectURL: baseUrl + '/authenticate',
+      signupRedirectURL: baseUrl + '/authenticate',
     }
   };
 
