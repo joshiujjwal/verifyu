@@ -18,16 +18,16 @@ const SignInPage: React.FC = () => {
   const baseUrl = import.meta.env.VITE_BASE_URL;
   
   const stytchLoginConfig: StytchLoginConfig = {
-    products: [Products.emailMagicLinks, Products.oauth],
+    products: [Products.emailMagicLinks],
     emailMagicLinksOptions: {
       loginRedirectURL: baseUrl + '/authenticate',
       signupRedirectURL: baseUrl + '/authenticate',
     },
-    oauthOptions: {
-      providers: [{ type: 'google' }],
-      loginRedirectURL: baseUrl + '/authenticate',
-      signupRedirectURL: baseUrl + '/authenticate',
-    }
+    // oauthOptions: {
+    //   providers: [{ type: 'google' }],
+    //   loginRedirectURL: baseUrl + '/authenticate',
+    //   signupRedirectURL: baseUrl + '/authenticate',
+    // }
   };
 
   const handleStytchAuth = async (data: { product: any; token: string; }) => {
