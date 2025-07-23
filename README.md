@@ -40,7 +40,7 @@ This project uses a modern, scalable, and secure tech stack designed for rapid d
 The project is organized into two main directories: `frontend` for the React application and `firebase` for all backend services.
 
 ```
-/vericard
+/verifyu
 ├── frontend/           # React App
 │   ├── src/
 │   │   ├── components/
@@ -73,7 +73,7 @@ The project is organized into two main directories: `frontend` for the React app
 
 ```sh
 git clone <your-repository-url>
-cd vericard
+cd verifyu
 ```
 
 ### 3. Frontend Setup
