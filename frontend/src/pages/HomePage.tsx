@@ -36,6 +36,7 @@ const HomePage: React.FC = () => {
           </button>
         </div>
       </form>
+      <p className='text-sm text-gray-400 mt-4'><i>Code is valid only once. If You see verification failed, request new code</i></p>
     </div>
   );
 };
