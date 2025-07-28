@@ -37,13 +37,13 @@ const VerificationOptions: React.FC = () => {
 
   return (
     <Card>
-      <h2 className="text-xl font-semibold text-white mb-4">Verification Status</h2>
+      <h2 className="text-xl font-semibold text-text-primary mb-4">Verification Status</h2>
       <div className="space-y-6">
         {/* Step 2: Phone Verification */}
         {currentLevel < 2 && (
           <div>
-            <h3 className="font-semibold text-lg text-white">Level 2: Phone Verification</h3>
-            <p className="text-gray-400 mt-1 mb-3">Verify your phone number using Stytch for an increased trust level.</p>
+            <h3 className="font-semibold text-lg text-text-primary">Level 2: Phone Verification</h3>
+            <p className="text-text-tertiary mt-1 mb-3">Verify your phone number using Stytch for an increased trust level.</p>
             <Button variant="secondary" onClick={() => alert("Redirect to Stytch phone verification flow.")}>
               <Shield className="w-4 h-4 mr-2" />
               Verify Phone
@@ -54,8 +54,8 @@ const VerificationOptions: React.FC = () => {
         {/* Step 3: Government ID */}
         {currentLevel < 3 && (
            <div>
-            <h3 className="font-semibold text-lg text-white">Level 3: Government ID</h3>
-            <p className="text-gray-400 mt-1 mb-3">Verify with a government-issued ID. This requires redirecting to a secure third-party service.</p>
+            <h3 className="font-semibold text-lg text-text-primary">Level 3: Government ID</h3>
+            <p className="text-text-tertiary mt-1 mb-3">Verify with a government-issued ID. This requires redirecting to a secure third-party service.</p>
             <Button variant="secondary" onClick={() => alert("Redirect to ID verification service.")}>
               <Shield className="w-4 h-4 mr-2" />
               Verify with ID
@@ -66,8 +66,8 @@ const VerificationOptions: React.FC = () => {
         {/* Step 4: World ID */}
         {currentLevel < 4 ? (
           <div>
-            <h3 className="font-semibold text-lg text-white">Level 4: Prove Personhood</h3>
-            <p className="text-gray-400 mt-1 mb-3">Use World ID to prove you are a unique human, providing the highest level of trust.</p>
+            <h3 className="font-semibold text-lg text-text-primary">Level 4: Prove Personhood</h3>
+            <p className="text-text-tertiary mt-1 mb-3">Use World ID to prove you are a unique human, providing the highest level of trust.</p>
             
             <IDKitWidget
               app_id={worldcoinAppId!}
@@ -84,18 +84,18 @@ const VerificationOptions: React.FC = () => {
               )}
             </IDKitWidget>
             {worldIdError && (
-                <div className="mt-3 flex items-center gap-2 text-red-400">
+                <div className="mt-3 flex items-center gap-2 text-status-error">
                     <AlertTriangle className="w-5 h-5" />
                     <p>{worldIdError}</p>
                 </div>
             )}
           </div>
         ) : (
-            <div className="flex items-center gap-3 p-4 bg-dark-900 rounded-lg">
-                <CheckCircle className="w-8 h-8 text-green-400" />
+            <div className="flex items-center gap-3 p-4 bg-bg-overlay rounded-lg">
+                <CheckCircle className="w-8 h-8 text-status-success" />
                 <div>
-                    <h3 className="font-semibold text-white">World ID Verified</h3>
-                    <p className="text-gray-400">You have achieved the highest verification level.</p>
+                    <h3 className="font-semibold text-text-primary">World ID Verified</h3>
+                    <p className="text-text-tertiary">You have achieved the highest verification level.</p>
                 </div>
             </div>
         )}

@@ -83,7 +83,7 @@ const AuthenticatePage: React.FC = () => {
     return (
       <div className="flex flex-col items-center justify-center min-h-screen">
         <Loader className="w-12 h-12 animate-spin text-brand-primary mb-4" />
-        <p className="text-gray-400">Authenticating...</p>
+        <p className="text-text-tertiary">Authenticating...</p>
       </div>
     );
   }
@@ -91,13 +91,13 @@ const AuthenticatePage: React.FC = () => {
   if (error) {
     return (
       <div className="flex flex-col items-center justify-center min-h-screen">
-        <div className="max-w-md mx-auto bg-dark-800 p-8 rounded-lg border border-red-500/50 text-center">
-          <AlertTriangle className="w-16 h-16 text-red-400 mx-auto mb-4" />
-          <h2 className="text-2xl font-bold text-white mb-2">Authentication Failed</h2>
-          <p className="text-red-300">{error}</p>
+        <div className="max-w-md mx-auto bg-bg-primary p-8 rounded-lg border border-status-error text-center">
+          <AlertTriangle className="w-16 h-16 text-status-error mx-auto mb-4" />
+          <h2 className="text-2xl font-bold text-text-primary mb-2">Authentication Failed</h2>
+          <p className="text-status-error">{error}</p>
           <button 
             onClick={() => navigate('/signin')}
-            className="mt-4 px-4 py-2 bg-brand-primary text-white rounded-lg hover:bg-brand-primary/90 transition-colors"
+            className="mt-4 px-4 py-2 bg-brand-primary text-text-primary rounded-lg hover:bg-brand-primary-hover transition-colors"
           >
             Try Again
           </button>

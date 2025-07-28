@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { httpsCallable, HttpsCallableResult } from 'firebase/functions';
 import { functions } from '../lib/firebase';
-import { ShieldCheck, ShieldAlert, Loader, Mail } from 'lucide-react';
+import { ShieldCheck, ShieldAlert, Mail, Loader } from 'lucide-react';
 import LevelBadge from '../components/profile/LevelBadge';
 
 interface VerificationResult {
@@ -52,10 +52,10 @@ const VerifyPage: React.FC = () => {
 
   if (error) {
     return (
-        <div className="max-w-md mx-auto mt-10 bg-dark-800 p-8 rounded-lg border border-red-500/50 text-center">
-            <ShieldAlert className="w-16 h-16 text-red-400 mx-auto mb-4" />
-            <h2 className="text-2xl font-bold text-white">Verification Failed</h2>
-            <p className="text-red-300 mt-2">{error}</p>
+        <div className="max-w-md mx-auto mt-10 bg-bg-primary p-8 rounded-lg border border-status-error text-center">
+            <ShieldAlert className="w-16 h-16 text-status-error mx-auto mb-4" />
+            <h2 className="text-2xl font-bold text-text-primary">Verification Failed</h2>
+            <p className="text-status-error mt-2">{error}</p>
         </div>
     );
   }
@@ -67,9 +67,9 @@ const VerifyPage: React.FC = () => {
     return (
         <div className="max-w-2xl mx-auto mt-10 space-y-6">
             {/* Verification Result */}
-            <div className="bg-dark-800 p-8 rounded-lg border border-green-500/50 text-center">
-                <ShieldCheck className="w-16 h-16 text-green-400 mx-auto mb-4" />
-                <h2 className="text-2xl font-bold text-white">User Verified</h2>
+            <div className="bg-bg-primary p-8 rounded-lg border border-status-success text-center">
+                <ShieldCheck className="w-16 h-16 text-status-success mx-auto mb-4" />
+                <h2 className="text-2xl font-bold text-text-primary">User Verified</h2>
                 
                 {/* Level Badge */}
                 <div className="mt-4 flex justify-center">
@@ -77,19 +77,19 @@ const VerifyPage: React.FC = () => {
                 </div>
                 
                 {/* Level Description */}
-                <p className="text-sm text-gray-400 mt-2">{levelData.description}</p>
+                <p className="text-sm text-text-tertiary mt-2">{levelData.description}</p>
                 
                 {/* User Details */}
-                <div className="mt-6 space-y-3 text-left">
+                <div className="mt-6 space-y-2">
                     {profile.displayName && (
-                        <div className="flex items-center gap-2 text-gray-200">
+                        <div className="flex items-center gap-2 text-text-secondary">
                             <span className="font-semibold">Name:</span>
                             <span>{profile.displayName}</span>
                         </div>
                     )}
                     
                     {profile.email && (
-                        <div className="flex items-center gap-2 text-gray-200">
+                        <div className="flex items-center gap-2 text-text-secondary">
                             <Mail className="w-4 h-4" />
                             <span>{profile.email}</span>
                         </div>
@@ -98,40 +98,40 @@ const VerifyPage: React.FC = () => {
             </div>
 
             {/* Verification Levels Legend */}
-            <div className="bg-dark-800 p-6 rounded-lg border border-gray-600">
-                <h3 className="text-lg font-semibold text-white mb-4 text-center">Verification Levels</h3>
+            <div className="bg-bg-primary p-6 rounded-lg border border-border-secondary">
+                <h3 className="text-lg font-semibold text-text-primary mb-4 text-center">Verification Levels</h3>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     {Object.entries(levelInfo).map(([levelNum, info]) => (
                         <div 
                             key={levelNum} 
                             className={`p-4 rounded-lg border-2 transition-all ${
                                 parseInt(levelNum) === level 
-                                    ? 'border-green-500/50 bg-green-500/10' 
-                                    : 'border-gray-600 bg-gray-700/30'
+                                    ? 'border-status-success bg-bg-success' 
+                                    : 'border-border-secondary bg-bg-secondary'
                             }`}
                         >
                             <div className="flex items-center gap-3">
                                 <span className="text-2xl">{info.icon}</span>
                                 <div className="flex-1">
                                     <div className="flex items-center gap-2">
-                                        <span className="font-semibold text-white">
+                                        <span className="font-semibold text-text-primary">
                                             Level {levelNum}: {info.name}
                                         </span>
                                         {parseInt(levelNum) === level && (
-                                            <span className="text-xs bg-green-500 text-white px-2 py-1 rounded-full">
+                                            <span className="text-xs bg-status-success text-text-primary px-2 py-1 rounded-full">
                                                 Current
                                             </span>
                                         )}
                                     </div>
-                                    <p className="text-sm text-gray-400 mt-1">{info.description}</p>
+                                    <p className="text-sm text-text-tertiary mt-1">{info.description}</p>
                                 </div>
                             </div>
                         </div>
                     ))}
                 </div>
                 
-                <div className="mt-4 p-3 bg-blue-500/10 border border-blue-500/30 rounded-lg">
-                    <p className="text-sm text-blue-300 text-center">
+                <div className="mt-4 p-3 bg-bg-info border border-status-info rounded-lg">
+                    <p className="text-sm text-status-info text-center">
                         💡 <strong>Tip:</strong> Higher verification levels indicate more thorough identity verification, 
                         providing greater trust and security for all users.
                     </p>

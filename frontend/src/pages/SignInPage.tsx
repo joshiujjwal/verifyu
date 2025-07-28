@@ -7,10 +7,6 @@ import { StytchLoginConfig, StytchEvent, StytchError } from '@stytch/vanilla-js'
 import { StytchLogin } from '@stytch/react';
 import { Products } from '@stytch/vanilla-js';
 
-
-
-
-
 const SignInPage: React.FC = () => {
   const navigate = useNavigate();
   
@@ -23,11 +19,6 @@ const SignInPage: React.FC = () => {
       loginRedirectURL: baseUrl + '/authenticate',
       signupRedirectURL: baseUrl + '/authenticate',
     },
-    // oauthOptions: {
-    //   providers: [{ type: 'google' }],
-    //   loginRedirectURL: baseUrl + '/authenticate',
-    //   signupRedirectURL: baseUrl + '/authenticate',
-    // }
   };
 
   const handleStytchAuth = async (data: { product: any; token: string; }) => {
@@ -68,7 +59,7 @@ const SignInPage: React.FC = () => {
 
   return (
     <div className="max-w-md mx-auto">
-        <h2 className="text-3xl font-bold text-center text-white mb-6">Sign In or Sign Up</h2>
+        <h2 className="text-3xl font-bold text-center text-text-primary mb-6">Sign In or Sign Up</h2>
         <StytchLogin config={stytchLoginConfig} callbacks={stytchCallbacks} />
     </div>
   );

@@ -7,10 +7,10 @@ interface LevelBadgeProps {
 }
 
 const levelInfo = {
-  1: { name: 'Bronze', icon: <Star className="w-full h-full" />, color: 'text-orange-400' },
-  2: { name: 'Silver', icon: <Award className="w-full h-full" />, color: 'text-slate-400' },
-  3: { name: 'Gold', icon: <ShieldCheck className="w-full h-full" />, color: 'text-yellow-400' },
-  4: { name: 'Diamond', icon: <Diamond className="w-full h-full" />, color: 'text-cyan-400' },
+  1: { name: 'Bronze', icon: <Star className="w-full h-full" />, color: 'text-level-bronze' },
+  2: { name: 'Silver', icon: <Award className="w-full h-full" />, color: 'text-level-silver' },
+  3: { name: 'Gold', icon: <ShieldCheck className="w-full h-full" />, color: 'text-level-gold' },
+  4: { name: 'Diamond', icon: <Diamond className="w-full h-full" />, color: 'text-level-diamond' },
 };
 
 const LevelBadge: React.FC<LevelBadgeProps> = ({ level, showText = true }) => {

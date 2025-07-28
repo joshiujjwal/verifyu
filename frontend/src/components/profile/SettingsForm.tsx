@@ -40,10 +40,10 @@ const SettingsForm: React.FC = () => {
   return (
     <form onSubmit={handleSave}>
       <Card className="mb-6">
-        <h2 className="text-xl font-semibold text-white mb-4">Profile Information</h2>
+        <h2 className="text-xl font-semibold text-text-primary mb-4">Profile Information</h2>
         <div className="space-y-4">
           <div>
-            <label htmlFor="displayName" className="block text-sm font-medium text-gray-300 mb-1">Display Name</label>
+            <label htmlFor="displayName" className="block text-sm font-medium text-text-secondary mb-1">Display Name</label>
             <Input
               id="displayName"
               type="text"
@@ -53,15 +53,15 @@ const SettingsForm: React.FC = () => {
             />
           </div>
           <div>
-            <label className="block text-sm font-medium text-gray-300 mb-1">Email</label>
-            <p className="text-gray-400">{userProfile.email}</p>
+            <label className="block text-sm font-medium text-text-secondary mb-1">Email</label>
+            <p className="text-text-tertiary">{userProfile.email}</p>
           </div>
         </div>
       </Card>
       
       <Card>
-        <h2 className="text-xl font-semibold text-white mb-4">Privacy Settings</h2>
-        <p className="text-gray-400 mb-4">Control what others see when they verify your code.</p>
+        <h2 className="text-xl font-semibold text-text-primary mb-4">Privacy Settings</h2>
+        <p className="text-text-tertiary mb-4">Control what others see when they verify your code.</p>
         <div className="space-y-4">
           <Switch
             label="Show Display Name"
@@ -80,7 +80,7 @@ const SettingsForm: React.FC = () => {
         <Button type="submit" isLoading={isSaving}>
           {isSaving ? 'Saving...' : 'Save Settings'}
         </Button>
-        {saveMessage && <p className="text-green-400">{saveMessage}</p>}
+        {saveMessage && <p className="text-status-success">{saveMessage}</p>}
       </div>
     </form>
   );
